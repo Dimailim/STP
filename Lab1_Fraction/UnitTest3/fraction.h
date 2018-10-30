@@ -8,14 +8,24 @@ private:
 	int x, y;
 public:
 	Fraction(int a, int b){
-		x = a;
-		y = b;
+		if (y == 0) {
+			x = 0;
+			y = 1;
+		}
+		else {
+			y = b;
+			x = a;
+		}
 		toShorten();
 	};
 
 	Fraction(string str) {
 		stringstream ss{ str };
 		(ss >> x).ignore(numeric_limits<streamsize>::max(), '/') >> y;
+		if (y == 0) {
+			x = 0;
+			y = 1;
+		}
 		toShorten();
 	};
 
