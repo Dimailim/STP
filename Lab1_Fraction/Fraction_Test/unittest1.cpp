@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "fraction.h"
+#include "../Fraction/fraction.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

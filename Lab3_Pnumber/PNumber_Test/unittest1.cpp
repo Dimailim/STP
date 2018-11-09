@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "Pnumber.h"
+#include "../PNumber/Pnumber.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

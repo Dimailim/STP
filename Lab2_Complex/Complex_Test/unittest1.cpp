@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "complex.h"
+#include "../Complex/complex.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

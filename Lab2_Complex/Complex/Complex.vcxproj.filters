@@ -21,7 +21,7 @@
     <ClInclude Include="targetver.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\UnitTestLab3\complex.h">
+    <ClInclude Include="complex.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
