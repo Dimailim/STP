@@ -29,12 +29,12 @@ namespace UnitTestPnumber
 
 		TEST_METHOD(TestMethodPlus)
 		{
-			Pnumber q(1, 2, 3);
-			Pnumber w(3, 2, 3);
+			Pnumber q(1.5, 2, 1);
+			Pnumber w(3.5, 2, 1);
 			Pnumber p = q + w;
-			Assert::AreEqual(4.0, p.a);
+			Assert::AreEqual(5.0, p.a);
 			Assert::AreEqual(2, p.b);
-			Assert::AreEqual(3, p.c);
+			Assert::AreEqual(1, p.c);
 		}
 
 		TEST_METHOD(TestMethodMul)
@@ -104,6 +104,15 @@ namespace UnitTestPnumber
 			string str3("A.6F0");
 			Pnumber p3(10.111, 16, 3);
 			Assert::AreEqual(str3, p3.getAstring());
+			/*
+			string str4("101.10");
+			string str5("110.111");
+			Pnumber p4(5.1, 2, 2);
+			Pnumber p5(6.7, 2, 3);
+			Assert::AreEqual(str4, p4.getAstring());
+			Assert::AreEqual(str5, p5.getAstring());
+			*/
+
 		}
 		TEST_METHOD(TestMethodGetB)
 		{
