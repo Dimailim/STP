@@ -7,6 +7,11 @@ class Fraction {
 private:
 	int x, y;
 public:
+	Fraction() {
+		x = 0;
+		y = 1;
+	};
+
 	Fraction(int a, int b){
 		if (y == 0) {
 			x = 0;

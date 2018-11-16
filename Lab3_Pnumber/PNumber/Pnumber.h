@@ -13,6 +13,12 @@ public:
 	double a;
 	int b, c;
 
+	Pnumber() {
+		a = 0;
+		b = 2;
+		c = 0;
+	}
+
 	Pnumber(double x, int y, int z) {
 		b = y;
 		if (b == 2 || b == 8 || b == 10 || b == 16) {
@@ -138,6 +144,7 @@ public:
 
 	string getAstring() {
 		stringstream ss;
+		if (a == 0) ss << "0";
 		int top, bot;
 		float ttop, tbot;
 		int bs;

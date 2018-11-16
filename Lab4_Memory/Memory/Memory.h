@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 
+using namespace std;
+
 template <class C>
 class Memory
 {
