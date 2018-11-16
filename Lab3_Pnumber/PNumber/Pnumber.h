@@ -11,7 +11,7 @@ private:
 	//int a, b, c;
 public:
 	double a;
-	int b, c;
+	unsigned int b, c;
 
 	Pnumber() {
 		a = 0;
@@ -147,7 +147,7 @@ public:
 		if (a == 0) ss << "0";
 		int top, bot;
 		float ttop, tbot;
-		int bs;
+		unsigned int bs;
 		tbot = modf((float)a, &ttop);
 		top = ttop;
 
