@@ -23,8 +23,7 @@ void Memory<C>::write(C other)
 template<class C>
 C Memory<C>::get()
 {
-	C temp = Fnumber;
-	return temp;
+	return Fnumber;
 }
 
 template<class C>
