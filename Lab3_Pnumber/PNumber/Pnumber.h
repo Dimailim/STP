@@ -7,16 +7,6 @@ using namespace std;
 class Pnumber {
 private:
 	//int a, b, c;
-
-	/*enum MyEnum
-	{
-		A = 10,
-		B = 11,
-		C = 12,
-		D = 13,
-		E = 14,
-		F = 15
-	};*/
 public:
 	double a;
 	int b, c;
@@ -37,7 +27,10 @@ public:
 	};
 
 	Pnumber operator + (const Pnumber &p2) {
-		return Pnumber(a + p2.a, b, c);
+		if (b == p2.b && c == p2.c)
+			return Pnumber(a + p2.a, b, c);
+		else
+			return Pnumber(0, 10, 0);
 	};
 
 	Pnumber operator * (const Pnumber &p2) {
