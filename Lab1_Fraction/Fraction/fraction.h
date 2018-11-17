@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <cmath>
 
 using namespace std;
 
@@ -7,6 +8,12 @@ class Fraction {
 private:
 	int x, y;
 public:
+
+	Fraction() {
+			x = 0;
+			y = 1;
+		};
+
 	Fraction(int a, int b){
 		if (y == 0) {
 			x = 0;
@@ -18,6 +25,12 @@ public:
 		}
 		toShorten();
 	};
+	
+	Fraction(double d){
+        x = d * 100000;
+        y = 100000;
+        toShorten();
+    }
 
 	Fraction(string str) {
 		stringstream ss{ str };
@@ -69,7 +82,7 @@ public:
 	Fraction operator / (const Fraction &f2) {
 		return Fraction(x * f2.y, y * f2.x);
 	};
-
+	
 	Fraction square() {
 		return Fraction(x * x, y * y);
 	};
@@ -114,5 +127,23 @@ public:
 		stringstream ss;
 		ss << x << "/" << y;
 		return ss.str();
+	}
+
+	operator double() const
+	{
+		return double(this->x / this->y);
+	}
+
+	Fraction operator = (const double &d)
+	{
+		/*
+		if (&f == this)
+			return *this;
+		return Fraction(this->x = f.x, this->y = f.y);
+		*/
+		this->x = d * 100000;
+		this->y = 100000;
+		toShorten();
+		return *this;
 	}
 };

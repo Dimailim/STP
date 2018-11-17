@@ -1,10 +1,13 @@
 #include "stdafx.h"
 #include "Memory.h"
+#include <string>
+
+using namespace std;
 
 template<class C>
 Memory<C>::Memory()
 {
-	Fnumber = new C;
+	Fnumber = *(new C);
 	Fstate = false;
 }
 
@@ -36,12 +39,12 @@ void Memory<C>::add(C other)
 template<class C>
 void Memory<C>::erase()
 {
-	Fnumber = new C;
+	Fnumber = *(new C);
 	Fstate = false;
 }
 
 template<class C>
 string Memory<C>::getState()
 {
-	return Fstate ? str("_On") : str("_Off");
+	return Fstate ? string("_On") : string("_Off");
 }

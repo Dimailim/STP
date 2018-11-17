@@ -1,10 +1,11 @@
+#include "stdafx.h"
 #include "Proc.h"
 
 template<class C>
 Proc<C>::Proc()
 {
-	Lop_Res = new C;
-	Rop = new C;
+	Lop_Res = *(new C);
+	Rop = *(new C);
 	Operation = None;
 }
 
@@ -16,8 +17,8 @@ Proc<C>::~Proc()
 template<class C>
 void Proc<C>::reset()
 {
-	Lop_Res = new C;
-	Rop = new C;
+	Lop_Res = *(new C);
+	Rop = *(new C);
 	Operation = None;
 }
 
@@ -98,11 +99,11 @@ void Proc<C>::setRight(C Operand)
 template<class C>
 int Proc<C>::getOptn()
 {
-	return Option;
+	return Operation;
 }
 
 template<class C>
 void Proc<C>::setOptn(int Oprtn)
 {
-	Option = Oprtn;
+	Operation = Oprtn;
 }
