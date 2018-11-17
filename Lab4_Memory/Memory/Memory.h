@@ -2,6 +2,8 @@
 #include <string>
 using namespace std;
 
+using namespace std;
+
 template <class C>
 class Memory
 {

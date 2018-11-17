@@ -12,6 +12,11 @@ private:
 public:
 	double a, b;
 
+	Complex() {
+		a = 0;
+		b = 0;
+	}
+
 	Complex(double x, double y){
 		a = x;
 		b = y;
