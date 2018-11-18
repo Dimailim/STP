@@ -11,7 +11,7 @@ private:
 	//int a, b, c;
 public:
 	double a;
-	unsigned int b, c;
+	int b, c;
 
 	Pnumber() {
 		a = 0;
@@ -40,14 +40,47 @@ public:
 			stringstream ss(sa);
 			ss >> std::setbase(b) >> top;
 
-			if (c > 0) {
-				int bot;
+			if (c) {
+				double bot = 0.0;
+				int tmp = 1;
 				char ch;
-				ss >> ch >> bot;
-				double tmp = bot;
-				while(tmp > 1)
-					tmp /= 10;
-				a = top + tmp;
+				ch = ss.get();
+				ch = ss.get();
+				//string str = ss.str();
+
+				while (ch != EOF) {
+					double t = 0;
+					tmp *= b;
+					switch (ch){
+						case '0': t = 0.0; break;
+						case '1': t = 1.0; break;
+						case '2': t = 2.0; break;
+						case '3': t = 3.0; break;
+						case '4': t = 4.0; break;
+						case '5': t = 5.0; break;
+						case '6': t = 6.0; break;
+						case '7': t = 7.0; break;
+						case '8': t = 8.0; break;
+						case '9': t = 9.0; break;
+						case 'a': t = 10.0; break;
+						case 'b': t = 11.0; break;
+						case 'c': t = 12.0; break;
+						case 'd': t = 13.0; break;
+						case 'e': t = 14.0; break;
+						case 'f': t = 15.0; break;
+						case 'A': t = 10.0; break;
+						case 'B': t = 11.0; break;
+						case 'C': t = 12.0; break;
+						case 'D': t = 13.0; break;
+						case 'E': t = 14.0; break;
+						case 'F': t = 15.0; break;
+						default: break;
+					}
+					bot += t / (double)tmp;
+					//str = str.substr(1);
+					ch = ss.get();
+				}
+				a = (double)top + bot;
 			}
 			else {
 				a = top;
@@ -67,10 +100,9 @@ public:
 	};
 
 	double fromBin(string str) {
-		int top = 0, tmp = 0, dot;
+		int top = 0, tmp = 1, dot;
 		double bot = 0;
 		
-
 		if (dot = str.find('.')) {
 			if (dot > 0) {
 				string t = str.substr(0, dot);
@@ -82,14 +114,10 @@ public:
 				}
 
 				while (!b.empty()) {
-					tmp = tmp << 1;
-					tmp += (b.front() == '1') ? 1 : 0;
+					tmp *= 2;
+					bot += (b.front() == '1') ? (1.0/(double)tmp) : 0;
 					b = b.substr(1);
 				}
-
-				bot = tmp;
-				while (bot > 1)
-					bot /= 10;
 			}
 		}
 		else {
@@ -145,16 +173,11 @@ public:
 	string getAstring() {
 		stringstream ss;
 		if (a == 0) ss << "0";
-		int top, bot;
-		float ttop, tbot;
+		int top;
+		float ttop, bot;
 		unsigned int bs;
-		tbot = modf((float)a, &ttop);
+		bot = modf((float)a, &ttop);
 		top = ttop;
-
-		for (bs = 0; bs < c && modf(tbot, &ttop); ++bs) {
-			tbot *= 10;
-		}
-		bot = tbot;
 
 		if (b == 2) {
 			string str;
@@ -168,13 +191,17 @@ public:
 				ss << '.';
 				str.clear();
 
-				while (bot) {
-					str.insert(0, (bot % 2) ? "1" : "0");
-					bot /= 2;
+				int count = 0;
+				while (bot != 0 && count < c) {
+					bot *= b;
+					int tmp = bot;
+					str.append(tmp ? "1" : "0");
+					bot -= tmp;
+					++count;
 				}
 
 				while (str.length() < c) {
-					str.insert(0, "0");
+					str += "0";
 				}
 				while (str.length() > c) {
 					str.pop_back();
@@ -187,18 +214,25 @@ public:
 			ss << std::setbase(b) << top;
 			if (c) {
 				ss << '.';
-
 				stringstream tss;
-				tss << std::setbase(b) << bot;
-				string tstr = tss.str();
-				while(tstr.length() < c) {
-					tstr.insert(0, "0");
-				}
-				while (tstr.length() > c) {
-					tstr.pop_back();
+				int count = 0;
+				while (bot != 0 && count < c) {
+					bot *= b;
+					int tmp = bot;
+					tss << (tmp < 10 ? tmp : (char)(87 + tmp));
+					bot -= tmp;
+					++count;
 				}
 
-				ss << tstr;
+				string str = tss.str();
+				while(str.length() < c) {
+					str += "0";
+				}
+				while (str.length() > c) {
+					str.pop_back();
+				}
+
+				ss << str;
 			}
 		}
 		else if (b == 10) {

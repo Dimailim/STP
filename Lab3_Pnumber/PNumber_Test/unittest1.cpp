@@ -20,19 +20,20 @@ namespace UnitTestPnumber
 
 		TEST_METHOD(TestMethodConstructString)
 		{
-			string a("C.F"), b("16"), c("1");
-			Pnumber p(a, b, c);
-			
-			Assert::AreEqual(12.15, p.a);
+			Pnumber p(string("C.C"), string("16"), string("1"));		
+			Assert::AreEqual(12.75, p.a, 0.001);
 			Assert::AreNotEqual(0, p.b);
 			Assert::AreNotEqual(0, p.c);
 			
-			string aa("10.101"), bb("2"), cc("3");
-			Pnumber p2(aa, bb, cc);
-
-			Assert::AreEqual(2.5, p2.a);
+			Pnumber p2(string("10.101"), string("2"), string("3"));
+			Assert::AreEqual(2.625, p2.a, 0.001);
 			Assert::AreNotEqual(0, p2.b);
-			Assert::AreNotEqual(0, p2.c);	
+			Assert::AreNotEqual(0, p2.c);
+
+			Pnumber oct(string("52.24"), string("8"), string("2"));
+			Assert::AreEqual(42.3125, oct.a, 0.00001);
+			Assert::AreNotEqual(0, oct.b);
+			Assert::AreNotEqual(0, oct.c);
 		}
 
 		TEST_METHOD(TestMethodPlus)
@@ -106,15 +107,15 @@ namespace UnitTestPnumber
 			Assert::AreEqual(dec, p.getAstring());
 
 			p.setB(2);
-			string bin("10011010.111");
+			string bin("10011010.010");
 			Assert::AreEqual(bin, p.getAstring());
 
 			p.setB(8);
-			string oct("232.377");
+			string oct("232.202");
 			Assert::AreEqual(oct, p.getAstring());			
 
 			p.setB(16);
-			string hex("9a.0ff");
+			string hex("9a.414");
 			Assert::AreEqual(hex, p.getAstring());
 		}
 		TEST_METHOD(TestMethodGetB)
