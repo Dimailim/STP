@@ -8,18 +8,10 @@ class Fraction {
 private:
 	int x, y;
 public:
-<<<<<<< HEAD
-
 	Fraction() {
 			x = 0;
 			y = 1;
 		};
-=======
-	Fraction() {
-		x = 0;
-		y = 1;
-	};
->>>>>>> 164653ded26e22ba8d4345b20b786dd24505a921
 
 	Fraction(int a, int b){
 		if (y == 0) {
@@ -143,11 +135,6 @@ public:
 
 	Fraction operator = (const double &d)
 	{
-		/*
-		if (&f == this)
-			return *this;
-		return Fraction(this->x = f.x, this->y = f.y);
-		*/
 		this->x = d * 100000;
 		this->y = 100000;
 		toShorten();

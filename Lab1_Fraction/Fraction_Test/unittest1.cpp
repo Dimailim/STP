@@ -12,7 +12,6 @@ namespace UnitTest
 		
 		TEST_METHOD(TestFracInit1)
 		{
-			// TODO: Разместите здесь код своего теста
 			Fraction f(3, 6);
 			Assert::AreEqual(1, f.getA());
 			Assert::AreEqual(2, f.getB());
