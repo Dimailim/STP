@@ -4,8 +4,8 @@
 template<class C>
 Proc<C>::Proc()
 {
-	Lop_Res = *(new C);
-	Rop = *(new C);
+	Lop_Res = C();
+	Rop = C();
 	Operation = None;
 }
 
@@ -17,8 +17,8 @@ Proc<C>::~Proc()
 template<class C>
 void Proc<C>::reset()
 {
-	Lop_Res = *(new C);
-	Rop = *(new C);
+	Lop_Res = C();
+	Rop = C();
 	Operation = None;
 }
 
