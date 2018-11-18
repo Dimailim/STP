@@ -164,6 +164,11 @@
     </ClCompile>
     <ClCompile Include="unittest1.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Polynom\Polynom.vcxproj">
+      <Project>{a5a547fb-6629-4403-abc2-95a726a91e04}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

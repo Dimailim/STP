@@ -1,5 +1,9 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
+#include "../Polynom/Poly.h"
+#include "../Polynom/Poly.cpp"
+#include "../Polynom/Member.h"
+#include "../Polynom/Member.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -9,9 +13,13 @@ namespace Plynom_Test
 	{
 	public:
 		
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(TestConstruct)
 		{
-			// TODO: Разместите здесь код своего теста
+			Poly e(0, 1); // коэффицент равен 0, поэтому степень не важна и зануляется
+			Assert::AreEqual(0, e.deg()); 
+
+			Poly f(1, 2);
+			Assert::AreEqual(2, f.deg());
 		}
 
 	};
