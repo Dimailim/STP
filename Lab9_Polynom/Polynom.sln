@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Polynom", "Polynom\Polynom.vcxproj", "{A5A547FB-6629-4403-ABC2-95A726A91E04}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Polynom_Test", "Polynom_Test\Polynom_Test.vcxproj", "{695BAF09-09E9-41EA-876B-80A902DBC3B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5A547FB-6629-4403-ABC2-95A726A91E04}.Debug|x64.ActiveCfg = Debug|x64
+		{A5A547FB-6629-4403-ABC2-95A726A91E04}.Debug|x64.Build.0 = Debug|x64
+		{A5A547FB-6629-4403-ABC2-95A726A91E04}.Debug|x86.ActiveCfg = Debug|Win32
+		{A5A547FB-6629-4403-ABC2-95A726A91E04}.Debug|x86.Build.0 = Debug|Win32
+		{A5A547FB-6629-4403-ABC2-95A726A91E04}.Release|x64.ActiveCfg = Release|x64
+		{A5A547FB-6629-4403-ABC2-95A726A91E04}.Release|x64.Build.0 = Release|x64
+		{A5A547FB-6629-4403-ABC2-95A726A91E04}.Release|x86.ActiveCfg = Release|Win32
+		{A5A547FB-6629-4403-ABC2-95A726A91E04}.Release|x86.Build.0 = Release|Win32
+		{695BAF09-09E9-41EA-876B-80A902DBC3B3}.Debug|x64.ActiveCfg = Debug|x64
+		{695BAF09-09E9-41EA-876B-80A902DBC3B3}.Debug|x64.Build.0 = Debug|x64
+		{695BAF09-09E9-41EA-876B-80A902DBC3B3}.Debug|x86.ActiveCfg = Debug|Win32
+		{695BAF09-09E9-41EA-876B-80A902DBC3B3}.Debug|x86.Build.0 = Debug|Win32
+		{695BAF09-09E9-41EA-876B-80A902DBC3B3}.Release|x64.ActiveCfg = Release|x64
+		{695BAF09-09E9-41EA-876B-80A902DBC3B3}.Release|x64.Build.0 = Release|x64
+		{695BAF09-09E9-41EA-876B-80A902DBC3B3}.Release|x86.ActiveCfg = Release|Win32
+		{695BAF09-09E9-41EA-876B-80A902DBC3B3}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D83F2CA-E144-4FD6-9D52-F7E051852C0D}
+	EndGlobalSection
+EndGlobal
