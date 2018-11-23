@@ -55,6 +55,7 @@ int Poly::coef(int n)
 void Poly::clear()
 {
 	vec.clear();
+	vec.push_back(Member());
 }
 
 Poly Poly::operator+(const Poly & q)
