@@ -13,6 +13,7 @@ public:
 	Poly();
 	Poly(int c, int n);
 	Poly(vector<Member> v); //myself
+	Poly(const Poly &q); //myself
 	~Poly();
 
 	int deg();
@@ -36,5 +37,7 @@ public:
 	//myself
 
 	string toString();
+
+	Poly operator = (const Poly &f);
 };
 

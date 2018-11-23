@@ -23,6 +23,11 @@ Poly::Poly(vector<Member> v)
 		vec.push_back(Member());
 }
 
+Poly::Poly(const Poly & q)
+{
+	vec = q.vec;
+}
+
 Poly::~Poly()
 {
 }
@@ -107,7 +112,7 @@ Poly Poly::operator-()
 {
 	vector<Member> v;
 
-	for (int i = vec.size() - 1; i > 0; --i) {
+	for (int i = 0; i < vec.size(); ++i) {
 		v.push_back(-vec[i]);
 	}
 	return Poly(v);
@@ -127,7 +132,7 @@ Poly Poly::diff()
 {
 	vector<Member> v;
 
-	for (int i = vec.size() - 1; i > 0; --i) {
+	for (int i = 0; i < vec.size(); ++i) {
 		v.push_back(vec[i].diff());
 	}
 	return Poly(v);
@@ -137,7 +142,7 @@ double Poly::calculate(int x)
 {
 	double res = 0.0;
 
-	for (int i = vec.size() - 1; i > 0; --i) {
+	for (int i = 0; i < vec.size(); ++i) {
 		res += vec[i].calculate(x);
 	}
 	return res;
@@ -158,10 +163,25 @@ string Poly::toString()
 	for (int i = 0; i < vec.size(); ++i) {
 		if (vec[i].isNegative() && i > 0) str += "-";
 		else if (i > 0) str += "+";
-		str += vec[i].getCoef();
-		str += "*x^";
-		str += vec[i].getDeg();
+
+		if(vec[i].getCoef() > 1)
+			str += vec[i].getCoef();
+
+		if (vec[i].getDeg() == 0) {}
+		else if (vec[i].getDeg() == 1) {
+			str += "x";
+		}
+		else {
+			str += "x^";
+			str += vec[i].getDeg();
+		}
 	}
 	return str;
+}
+
+Poly Poly::operator=(const Poly & f)
+{
+	vec = f.vec;
+	return *this;
 }
 
