@@ -4,20 +4,22 @@
 #include <cstdlib>
 using namespace std;
 
-string const Nu = "0,";
+string const Nu = "0";
 
 class TEditor
 {
 private:
 	string CEdit; // строка
-	string separator = ",";
+	string const separator = ",";
+	
 
 public:
 	enum
 	{
-		Add = 20,
+		Sign = 20,
 		Erase = 21,
-		Remove = 22
+		RemoveAll = 22,
+		Dot = 23
 		
 	}; // ???
 	bool  NumberIsNull(); // число≈стьЌоль
@@ -30,6 +32,7 @@ public:
 	string GetStore(); // читать—трока¬формате—троки
 	void SetStore(string a); //писать—трока¬формате—троки
 	string Edit(int a); // –едактировать
+	string AddDot();
 	
 };
 string toString(int a) { // ???  some shit  how fix?
