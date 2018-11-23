@@ -10,6 +10,7 @@ class TEditor
 {
 private:
 	string CEdit; // строка
+	string separator = ",";
 
 public:
 	enum
