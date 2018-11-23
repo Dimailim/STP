@@ -64,7 +64,7 @@ double Member::calculate(int x)
 			return FCoef;
 		}
 		else {
-			FCoef * pow(x, FDegree);
+			return FCoef * pow(x, FDegree);
 		}
 	}
 	//return (FDegree == 0) ? FCoef : FCoef * pow(x, FDegree);
