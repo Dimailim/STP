@@ -1,6 +1,7 @@
 #pragma once
 #include <cmath>
 #include <string>
+#include <sstream>
 #include <vector>
 #include <algorithm>
 #include "Member.h"
@@ -37,7 +38,6 @@ public:
 	//myself
 
 	string toString();
-
-	Poly operator = (const Poly &f);
+	//Poly operator = (const Poly &f);
 };
 

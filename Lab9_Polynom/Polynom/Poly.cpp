@@ -66,14 +66,26 @@ void Poly::clear()
 Poly Poly::operator+(const Poly & q)
 {
 	vector<Member> v;
+	vector<Member> r = q.vec;
 
 	for (int i = 0; i < vec.size(); ++i) {
-		for (int j = 0; j < q.vec.size(); ++j) {
-			Member tmp = vec[i] + q.vec[j];
+		bool i_sum = false;
+		for (int j = 0; j < r.size(); ++j) {
+			Member tmp = vec[i] + r[j];
 			if (!tmp.isNull()) {
+				vector<Member>::iterator it = r.begin() + j--;
+				r.erase(it);
 				v.push_back(tmp);
+				i_sum = true;
+				break;
 			}
 		}
+		if (!i_sum) {
+			v.push_back(vec[i]);
+		}
+	}
+	for (int j = 0; j < r.size(); ++j) {
+		v.push_back(r[j]);
 	}
 	return Poly(v);
 }
@@ -81,14 +93,26 @@ Poly Poly::operator+(const Poly & q)
 Poly Poly::operator-(const Poly & q)
 {
 	vector<Member> v;
+	vector<Member> r = q.vec;
 
 	for (int i = 0; i < vec.size(); ++i) {
+		bool i_sum = false;
 		for (int j = 0; j < q.vec.size(); ++j) {
 			Member tmp = vec[i] - q.vec[j];
 			if (!tmp.isNull()) {
+				vector<Member>::iterator it = r.begin() + j--;
+				r.erase(it);
 				v.push_back(tmp);
+				i_sum = true;
+				break;
 			}
 		}
+		if (!i_sum) {
+			v.push_back(vec[i]);
+		}
+	}
+	for (int j = 0; j < r.size(); ++j) {
+		v.push_back(r[j]);
 	}
 	return Poly(v);
 }
@@ -158,30 +182,41 @@ Member Poly::at(int i)
 
 string Poly::toString()
 {
-	string str;
-	if (vec[0].isNegative()) str += "-";
+	stringstream str;
+	if (vec[0].isNull()) {
+		str << "0";
+		return str.str();
+	}
+
+	if (vec[0].isNegative()) 
+		str << "-";
+
 	for (int i = 0; i < vec.size(); ++i) {
-		if (vec[i].isNegative() && i > 0) str += "-";
-		else if (i > 0) str += "+";
+		if (vec[i].isNegative() && i > 0) 
+			str << "-";
+		else if (i > 0) 
+			str << "+";
 
-		if(vec[i].getCoef() > 1)
-			str += vec[i].getCoef();
+		int c = vec[i].getCoef();
+		if(c > 1)
+			str << c;
 
-		if (vec[i].getDeg() == 0) {}
-		else if (vec[i].getDeg() == 1) {
-			str += "x";
-		}
-		else {
-			str += "x^";
-			str += vec[i].getDeg();
+		int d = vec[i].getDeg();
+		if (d >= 1)
+			str << "x";
+		if (d > 1) {
+			str << "^";
+			str << d;
 		}
 	}
-	return str;
+	return str.str();
 }
 
+/*
 Poly Poly::operator=(const Poly & f)
 {
 	vec = f.vec;
 	return *this;
 }
+*/
 
