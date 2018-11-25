@@ -9,10 +9,7 @@ Poly::Poly()
 
 Poly::Poly(int c, int n)
 {
-	if(c > 0)
-		vec.push_back(Member(c, n));
-	else
-		vec.push_back(Member());
+	vec.push_back(Member(c, n));
 }
 
 Poly::Poly(vector<Member> v)
@@ -182,7 +179,7 @@ Member Poly::at(int i)
 
 string Poly::toString()
 {
-	stringstream str;
+	/*stringstream str;
 	if (vec[0].isNull()) {
 		str << "0";
 		return str.str();
@@ -210,13 +207,13 @@ string Poly::toString()
 		}
 	}
 	return str.str();
+	*/
+	stringstream ss;
+	for (int i = 0; i < vec.size(); ++i) {
+		if (!vec[i].isNegative() && i > 0)
+			ss << '+';
+		ss << vec[i].toString();
+	}
+	return ss.str();
 }
-
-/*
-Poly Poly::operator=(const Poly & f)
-{
-	vec = f.vec;
-	return *this;
-}
-*/
 

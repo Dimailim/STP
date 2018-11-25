@@ -67,12 +67,33 @@ double Member::calculate(int x)
 			return FCoef * pow(x, FDegree);
 		}
 	}
-	//return (FDegree == 0) ? FCoef : FCoef * pow(x, FDegree);
 }
 
 string Member::toString()
 {
-	return string(FCoef + "*x^" + FDegree);
+	stringstream ss;
+	if (FCoef == 0) {
+		ss << 0;
+	}
+	else {
+		if (FCoef == -1 || FCoef == 1) {
+			if (FDegree == 0)
+				ss << FCoef;
+			else if (FCoef == -1)
+				ss << '-';
+		}
+		else {
+			ss << FCoef;
+		}
+		
+		if (FDegree != 0) {
+			ss << 'x';
+			if (FDegree > 1 || FDegree < 0) {
+				ss << '^' << FDegree;
+			}
+		}
+	}
+	return ss.str();
 }
 
 Member Member::operator+(const Member & q)

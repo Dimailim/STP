@@ -15,8 +15,8 @@ namespace Polynom_Test
 		
 		TEST_METHOD(Construct)
 		{
-			Poly e(0, 1); // коэффицент равен 0, поэтому степень не важна и зануляется
-			Assert::AreEqual(0, e.deg()); 
+			Poly e(0, 1);
+			Assert::AreEqual(1, e.deg()); 
 
 			Poly f(1, 2);
 			Assert::AreEqual(2, f.deg());
@@ -32,11 +32,11 @@ namespace Polynom_Test
 		TEST_METHOD(Sum)
 		{
 			Poly a(1, 3);
-			Poly b(1, 2);
+			Poly b(-1, 2);
 			Poly c(3, 1);
 			Poly res;
 			res = a + b + b + c;
-			Assert::AreEqual(string("x^3+2x^2+3x"), res.toString());	
+			Assert::AreEqual(string("x^3-2x^2+3x"), res.toString());
 		}
 		TEST_METHOD(Minus)
 		{

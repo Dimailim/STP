@@ -38,6 +38,5 @@ public:
 	//myself
 
 	string toString();
-	//Poly operator = (const Poly &f);
 };
 
