@@ -4,7 +4,7 @@
 
 bool FEditor::FracIsNull()
 {
-	regex fNumreg("-?0/?1*"); //  или  после 1 "+" - один или более раз ? 
+	regex fNumreg("-?0/?[1-9]*");
 	if (regex_match(FEdit, fNumreg)) {
 		return true;
 	}
@@ -16,9 +16,9 @@ bool FEditor::FracIsNull()
 string FEditor::AddSign()
 {
 	if (FEdit[0] == '-') {
-		FEdit.erase(FEdit.find('-'), 1);
+		FEdit.erase(0, 1);
 	}
-	else {
+	else if(FEdit[0] != '0'){
 		FEdit = "-" + FEdit;
 	}
 	return FEdit;
@@ -26,10 +26,16 @@ string FEditor::AddSign()
 
 string FEditor::AddFracNumber(int a)
 {
-	string d;
-		d = toString(a);
-	FEdit.append(d);
-	//FEdit = d;
+	if (FEdit.length() == 2) {
+		if (FEdit[0] == '-' && FEdit[1] == 0) {
+			FEdit.pop_back();
+		}
+	}
+	else if(FEdit.length() == 1 && FEdit[0] == '0'){
+		FEdit.pop_back();
+	}
+
+	FEdit.append(toString(a));
 	return FEdit;
 }
 
@@ -40,10 +46,10 @@ string FEditor::AddNull()
 
 string FEditor::Backspace()
 {
-	int n;
-	n = FEdit.length();
-	FEdit.erase(n - 1, 1);
-	if ((FEdit == "") || (FEdit == "-")) { // work
+	if (FEdit.length() > 0) {
+		FEdit.pop_back();
+	}
+	if ((FEdit == "") || (FEdit == "-")) {
 		FEdit = Nu;
 	}
 	return FEdit;
@@ -57,7 +63,7 @@ string FEditor::Clear()
 
 FEditor::FEditor(string Cr)
 {
-	regex fNumreg("-?(0|[1-9][0-9]*)/?[1-9][0-9]*");
+	regex fNumreg("(0|-?[1-9][0-9]*)/[1-9][0-9]*");
 	if (regex_match(Cr, fNumreg))
 		FEdit = Cr;
 }
@@ -69,7 +75,7 @@ string FEditor::GetStore()
 
 void FEditor::SetStore(string a)
 {
-	regex fNumreg("-?(0|[1-9][0-9]*)/[1-9][0-9]*");
+	regex fNumreg("(0|-?[1-9][0-9]*)/[1-9][0-9]*");
 	if (regex_match(a, fNumreg))
 		FEdit = a;
 }
@@ -77,32 +83,33 @@ void FEditor::SetStore(string a)
 string FEditor::Edit(int a)
 {
 	string Result;
-		
-		if (a < 0 || a > 0) {
-			Result = AddFracNumber(a);
-		}
-		if (a == 0) {
-			Result = AddNull();
-		}
-		else{ 
-			Result = FEdit;
-		}
-		switch (a)
-		{
-		case Sign: //  + or -
-			Result = AddSign();
-			break;
-		case Erase: // backSpace
-			Result = Backspace();
-			break;
-		case RemoveAll:
-			Result = Clear();
-			break;
-		case Separator:
-			Result = AddSeparator();
-		default:
-			break;
-		}
+
+	if (a == 0) {
+		Result = AddNull();
+	}
+	else if (a > 0 && a < 10) {
+		Result = AddFracNumber(a);
+	}
+	else{ 
+		Result = FEdit;
+	}
+
+	switch (a)
+	{
+	case Sign: //  + or -
+		Result = AddSign();
+		break;
+	case Erase: // backSpace
+		Result = Backspace();
+		break;
+	case RemoveAll:
+		Result = Clear();
+		break;
+	case Separator:
+		Result = AddSeparator();
+	default:
+		break;
+	}
 
 	return Result;
 }
