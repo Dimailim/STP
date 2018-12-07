@@ -2,12 +2,12 @@
 #include "Set.h"
 
 template<class T>
-Set::Set()
+Set<T>::Set()
 {
 }
 
 template<class T>
-Set::~Set()
+Set<T>::~Set()
 {
 	container.clear();
 }
