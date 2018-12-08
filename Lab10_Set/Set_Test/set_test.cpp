@@ -3,6 +3,7 @@
 #include "../Set/Set.h"
 #include "../Set/Set.cpp"
 #include "../../Lab1_Fraction/Fraction/fraction.h"
+#include "../Set/iSet.h"
 #include <random>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -111,6 +112,19 @@ namespace Set_Test
 			Assert::AreEqual(6, n.elem(1));
 			Assert::AreEqual(5, n.elem(0));
 		}
+	};
+	TEST_CLASS(iSetUnitTest) {
+	public:
+		TEST_METHOD(Ñlear)
+		{
+			iSet<Fraction> s;
+			for (int i = 0; i < 10; i++) {
+				Fraction f(rand() % 10, rand() % 10 + 1);
+				s.insert(f);
 
+			}
+			s.clear();
+			Assert::IsTrue(s.empty());
+		}
 	};
 }
