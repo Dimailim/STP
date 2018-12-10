@@ -126,5 +126,97 @@ namespace Set_Test
 			s.clear();
 			Assert::IsTrue(s.empty());
 		}
+
+		TEST_METHOD(Add)
+		{
+			iSet<Fraction> s;
+			Fraction f(1, 2);
+			Fraction f1(4, 6);
+			s.insert(f);
+			s.insert(f1);
+			Assert::IsFalse(s.empty());
+		}
+		TEST_METHOD(Del)
+		{
+			iSet<Fraction> s;
+			Fraction f1(1, 4);
+			s.erase(f1);
+			Assert::IsFalse(s.contains(f1));
+		}
+
+		TEST_METHOD(isEmpty)
+		{
+			iSet<Fraction> s;
+			Assert::IsTrue(s.empty());
+
+		}
+		TEST_METHOD(Contains)
+		{
+			iSet<int> n;
+			n.insert(2);
+			n.insert(5);
+			n.insert(8);
+			Assert::IsTrue(n.contains(2));
+			Assert::IsTrue(n.contains(5));
+			Assert::IsTrue(n.contains(8));
+			Assert::IsFalse(n.contains(1));
+
+		}
+		TEST_METHOD(Merge)
+		{
+			iSet<int> n;
+			n.insert(5);
+			n.insert(6);
+			n.insert(7);
+			iSet<int> n1;
+			n1.insert(2);
+			n1.insert(3);
+			n = n.merge(n1);
+			Assert::AreEqual(7, n.elem(4));
+			Assert::AreEqual(6, n.elem(3));
+			Assert::AreEqual(5, n.elem(2));
+			Assert::AreEqual(3, n.elem(1));
+			Assert::AreEqual(2, n.elem(0));
+		}
+		TEST_METHOD(Diff)
+		{
+			iSet<int> n;
+			n.insert(5);
+			n.insert(6);
+			n.insert(7);
+			n.insert(8);
+			iSet<int> n1;
+			n1.insert(7);
+			n1.insert(8);
+			iSet<int> n2;
+			n2 = n.diff(n1);
+			Assert::AreEqual(5, n2.elem(0));
+			Assert::AreEqual(6, n2.elem(1));
+		}
+		TEST_METHOD(Cross)
+		{
+			iSet<int> n;
+			n.insert(5);
+			n.insert(6);
+			n.insert(7);
+			n.insert(8);
+			iSet<int> n1;
+			n1.insert(7);
+			n1.insert(8);
+			n = n.cross(n1);
+			Assert::AreEqual(8, n.elem(1));
+			Assert::AreEqual(7, n.elem(0));
+
+		}
+		TEST_METHOD(Elem)
+		{
+			iSet<int> n;
+			n.insert(5);
+			n.insert(6);
+			n.insert(7);
+			Assert::AreEqual(7, n.elem(2));
+			Assert::AreEqual(6, n.elem(1));
+			Assert::AreEqual(5, n.elem(0));
+		}
 	};
 }
